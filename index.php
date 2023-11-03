@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Index | Pendaftaran Lomba Nyanyi</title>
+    <title>Index | Pendaftaran</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -14,19 +14,20 @@
   <body>
     <div class="container p-5">
       <div class="text-center">
-        <h1>Website Pendaftaran Lomba Nyanyi</h1>
+        <h1>Website Pendaftaran Siswa Baru</h1>
       </div>
       <div class="row mt-5">
         <h4 class="text-center mb-3">Menu Web Pendaftaran</h4>
         <div class="col-md-6">
           <div class="card w-100 h-100">
             <div class="card-body">
-              <h5 class="card-title">Pendaftaran Lomba Nyanyi</h5>
+              <h5 class="card-title">Pendaftaran Siswa Baru</h5>
               <p class="card-text">
-                Halaman untuk melakukan registrasi pendaftaran lomba nyanyi
+                Halaman untuk melakukan registrasi pendaftaran siswa baru
+            
               </p>
-              <a href="registrasi.php" class="btn btn-primary"
-                >Registrasi</a
+              <a href="form-daftar.php" class="btn btn-primary"
+                >Registrasi Siswa</a
               >
             </div>
           </div>
@@ -34,9 +35,9 @@
         <div class="col-md-6">
           <div class="card w-100 h-100">
             <div class="card-body">
-              <h5 class="card-title">List Pendaftar Lomba Nyanyi</h5>
+              <h5 class="card-title">List Pendaftar Siswa Baru</h5>
               <p class="card-text">
-                Halaman untuk mengelist semua pendaftar dari peserta, bisa
+                Halaman untuk mengelist semua pendaftar dari, bisa
                 melakukan update dan delete data yang ada
               </p>
               <a href="list-siswa.php" class="btn btn-primary"
@@ -57,9 +58,9 @@
     <script>
         <?php
             if ($_GET['status'] == 'sukses') {
-                echo "Swal.fire({icon:'success',title:'Berhasil Menambahkan Data',text:'Berhasil registrasi'})";
+                echo "Swal.fire({icon:'success',title:'Berhasil Menambahkan Data',text:'Berhasil registrasi di'})";
             } else {
-                echo "Swal.fire({icon:'error',title:'Error Terjadi',text:'Gagal melakukan registrasi'})";
+                echo "Swal.fire({icon:'error',title:'Error Terjadi',text:'Gagal melakukan pendaftaran'})";
             }
         ?>
     </script>

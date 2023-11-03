@@ -1,34 +1,9 @@
-<?php
-
-include 'config.php';
-
-// kalau tidak ada id di query string
-if (!isset($_GET['id'])) {
-    header('Location: list-pendaftar.php');
-}
-
-// ambil id dari query string
-$id = $_GET['id'];
-
-// buat query untuk ambil data dari database
-$sql = "SELECT * FROM pendaftar WHERE id=$id";
-$query = mysqli_query($db_connection, $sql);
-$pendaftar = mysqli_fetch_assoc($query);
-
-// jika data yang di-edit tidak ditemukan
-if (mysqli_num_rows($query) < 1) {
-    exit('data tidak ditemukan...');
-}
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edit Pendaftar | Pendaftaran Lomba Nyanyi</title>
+    <title>Pendaftaran Siswa Baru | Pendaftaran SMA</title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -49,10 +24,9 @@ if (mysqli_num_rows($query) < 1) {
                   class="fw-normal mb-3 pb-3 text-center"
                   style="letter-spacing: 1px"
                 >
-                  Edit Pendaftaran pendaftar Baru
+                  Pendaftaran Siswa Baru
                 </h5>
-                <form action="edit_proses.php" method="POST">
-                    <input type="hidden" name="id" value="<?php echo $pendaftar['id']; ?>" />
+                <form action="proses-pendaftaran.php" method="POST">
                   <div class="input-group mb-3">
                     <input
                       type="text"
@@ -60,7 +34,6 @@ if (mysqli_num_rows($query) < 1) {
                       placeholder="Nama"
                       aria-label="nama"
                       name="nama"
-                      value="<?php echo $pendaftar['nama']; ?>"
                       required
                     />
                   </div>
@@ -71,21 +44,18 @@ if (mysqli_num_rows($query) < 1) {
                       placeholder="Alamat Anda"
                       aria-label="alamat"
                       name="alamat"
-                      value="<?php echo $pendaftar['alamat']; ?>"
                       required
                     />
                   </div>
                   <div class="mb-3">
-                    <?php $jk = $pendaftar['jenis_kelamin']; ?>
                     <div class="form-check form-check-inline">
                       <input
                         class="form-check-input"
                         type="radio"
                         name="jenis_kelamin"
                         id="laki"
-                        value="Laki-Laki" <?php echo ($jk == 'Laki-Laki') ? 'checked' : ''; ?>
+                        value="Laki-Laki"
                       />
-                      <?php echo $jk; ?>
                       <label class="form-check-label" for="laki">
                         Laki-Laki
                       </label>
@@ -95,24 +65,24 @@ if (mysqli_num_rows($query) < 1) {
                         class="form-check-input"
                         type="radio"
                         name="jenis_kelamin"
-                        id="Perempuan"
-                        value="Perempuan" <?php echo ($jk == 'Perempuan') ? 'checked' : ''; ?>
+                        id="perempuan"
+                        value="Perempuan"
                       />
-                      <label class="form-check-label" for="Perempuan">
+                      <label class="form-check-label" for="perempuan">
                         Perempuan
                       </label>
                     </div>
                   </div>
 
                   <div class="mb-3">
-                    <?php $agama = $pendaftar['agama']; ?>
                     <select class="form-select" aria-label="Agama" name="agama" required>
-                     <option <?php echo ($agama == 'Islam') ? 'selected' : ''; ?>>Islam</option>
-                      <option <?php echo ($agama == 'Kristen') ? 'selected' : ''; ?>>Kristen</option>
-                      <option <?php echo ($agama == 'Katolik') ? 'selected' : ''; ?>>Katolik</option>
-                      <option <?php echo ($agama == 'Hindu') ? 'selected' : ''; ?>>Hindu</option>
-                      <option <?php echo ($agama == 'Budha') ? 'selected' : ''; ?>>Budha</option>
-                      <option <?php echo ($agama == 'Konghuchu') ? 'selected' : ''; ?>>Konghuchu</option>
+                      <option selected disabled>Pilih Agama Anda</option>
+                      <option value="Islam">Islam</option>
+                      <option value="Kristen">Kristen</option>
+                      <option value="Katolik">Katolik</option>
+                      <option value="Hindu">Hindu</option>
+                      <option value="Budha">Budha</option>
+                      <option value="Konghuchu">Konghuchu</option>
                     </select>
                   </div>
 
@@ -120,14 +90,13 @@ if (mysqli_num_rows($query) < 1) {
                     <input
                       type="text"
                       class="form-control"
-                      placeholder="Kampus Asal"
-                      aria-label="KampusAsal"
-                      name="kampus_asal"
-                      value="<?php echo $pendaftar['kampus_asal']; ?>"
+                      placeholder="Sekolah Asal"
+                      aria-label="SekolahAsal"
+                      name="sekolah_asal"
                       required
                     />
                   </div>
-                  <input type="submit" value="Simpan" class="btn btn-primary btn-block" name="simpan"></input>
+                  <input type="submit" value="Daftar" class="btn btn-primary btn-block" name="daftar"></input>
                 </form>
               </div>
             </div>

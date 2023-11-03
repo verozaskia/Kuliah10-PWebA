@@ -1,13 +1,14 @@
 <?php
 
-$server = '127.0.0.1';
-$port = '3306';
-$username = 'root';
-$db_name = 'PWEB_REGISTRASI';
-$password = '';
+$server = "localhost";
+$user = "root";
+$password = "";
+$nama_database = "pendaftaran_siswa";
 
-$db_connection = mysqli_connect($server, $username, $password, $db_name, $port);
+$db = mysqli_connect($server, $user, $password, $nama_database);
 
-if (!$db_connection) {
-    die('Koneksi gagal: ' . mysqli_connect_error());
+if( !$db ){
+    die("Gagal terhubung dengan database: " . mysqli_connect_error());
 }
+
+?>
